@@ -1,7 +1,9 @@
 ---
 title: "Switching between space and time: Spatio-temporal analysis with <br> {{< fa earth-oceania >}} cubble {{< fa clock size=fa-xs >}}"
 author: '[{{< fa brands github >}}](https://github.com/huizezhang-sherry/) Sherry Zhang [{{< fa brands twitter >}}](https://twitter.com/huizezhangsh)'
-date: "2022 Nov 10"
+date: "Nov 10 2022"
+institute: "Monash University, Melbourne, Australia"
+host: "CANSSI Ontario Statistical Software Conference" 
 format: 
   revealjs:
     scrollable: true
@@ -15,10 +17,13 @@ format:
       data-background-position: "top 0% right 0%"
       data-background-size: "10%, 10%"
     multiplex: true
-    chalkboard: true
 editor_options: 
   chunk_output_type: console
 ---
+
+# Hi!{.smaller}
+
+<!-- https://sherryzhang-canssi.netlify.app/ -->
 
 ```{r setup}
 #| include: false  
@@ -39,11 +44,15 @@ library(tsibble)
 library(flair)
 ```
 
-# Hi!{.smaller}
+```{css, echo=FALSE}
+.title {
+  font-size: 20px;
+}
+```
 
 ::: columns
 ::: {.column width="65%"}
--   A 3rd year PhD student at Monash University, Melbourne, Australia
+-   A third year PhD student at Monash University
 
 -   My research centers on exploring multivariate spatio-temporal data with data wrangling and visualisation tool.
 
@@ -62,22 +71,11 @@ knitr::include_graphics(here::here("figures/headshot.jpg"))
 :::
 :::
 
-:::footer
-[https://huizezhangsh.netlify.app/](https://huizezhangsh.netlify.app/)
-:::
-
 ```{r}
-stations_sf <- cubble::climate_subset %>% select(-ts) %>% 
-  sf::st_as_sf(coords = c("long", "lat"), crs = 4283, remove = FALSE)
+stations <- cubble::climate_subset %>% select(-ts)
 
 oz <- ozmaps::abs_ste %>% filter(NAME != "Other Territories")
 oz_simp <- oz %>% rmapshaper::ms_simplify(keep = 0.05) 
-
-stations <- ggplot() +
-  geom_sf(data = oz_simp, fill = "grey95", color = "white") +
-  geom_point(data = stations_sf, aes(long,lat)) + 
-  ggthemes::theme_map() + 
-  ggtitle("Vector")
 
 ts <- cubble::climate_subset %>% 
   face_temporal() %>% 
@@ -85,13 +83,27 @@ ts <- cubble::climate_subset %>%
   as_tibble()
 ```
 
+## Motivation on cubble 
+
+
+
+picture of things in different places 
+
+:::{.notes}
+Storage of spatial and temporal data is often split into different tables, which complicates spatio-temporal data analysis. Creating one table has the problem of inefficient memory use, due to repeated information, especially when large geometry objects are combined with frequent (daily or weekly) temporal data.
+:::
+
 ## Motivation on cubble
 
+Maybe join? No no
 
+## Motivation on cubble
 
-## Cubble - a spatio-temporal vector data structure
+I will would like to use all my data analysis toolkit built on top of tibble/ data.frame
 
-<br>
+## Cubble: a spatio-temporal vector data structure
+
+Cubble is a nested object built on tibble that allow easy pivoting between spatial and temporal form.
 
 
 ```{r}
@@ -123,20 +135,8 @@ Here the illustration shows you how to turn a nested cubble into the long form w
 ::::columns
 
 :::column
-```{r cb-code, eval = FALSE, echo = TRUE}
-cb_obj %>% 
-  {{ Your spatial analysis }} %>% 
-  face_temporal() %>% 
-  {{ Your temporal analysis }} %>% 
-  face_spatial() %>% 
-  {{ Your spatial analysis }} 
-```
-
-:::
-
-:::column
 ```{r conv-code, eval = FALSE, echo =TRUE}
-spatial <- stations_sf %>% 
+spatial <- stations %>% 
   {{ Your spatial analysis }} 
 
 ##############################
@@ -162,6 +162,20 @@ sp_subset %>%
 ```
 
 :::
+
+:::column
+```{r cb-code, eval = FALSE, echo = TRUE}
+cb_obj %>% 
+  {{ Your spatial analysis }} %>% 
+  face_temporal() %>% 
+  {{ Your temporal analysis }} %>% 
+  face_spatial() %>% 
+  {{ Your spatial analysis }} 
+```
+
+:::
+
+
 ::::
 
 :::{.notes}
@@ -180,15 +194,55 @@ sp_subset %>%
 * Also the cubble pipeline chains all the operations together with no intermediate objects created in the workflow.
 :::
 
+## Australia weather station data: {.smaller} 
 
-## Cast your data into a cubble {.smaller}
+::::columns
+:::{.column width="60%"}
+
+```{r}
+#| echo: true
+stations
+```
+
+```{r data-stations}
+#| echo: false
+#| eval: true
+ggplot() +
+  geom_sf(data = oz_simp, fill = "grey95", color = "white") +
+  geom_point(data = stations, aes(long,lat)) + 
+  ggthemes::theme_map()
+```
+
+:::
+
+:::{.column width="40%"}
+```{r}
+#| echo: true
+ts
+```
+
+```{r data-ts}
+ts %>% 
+  ggplot() +
+  geom_line(aes(x = date, y = tmax, group = id), alpha = 0.4) + 
+  theme_bw()
+```
+
+
+:::
+
+::::
+
+## Cast your data into a cubble
 
 ```{r echo = TRUE}
 (weather <- as_cubble(
-  list(spatial = stations_sf, temporal = ts),
+  list(spatial = stations, temporal = ts),
   key = id, index = date, coords = c(long, lat)
 ))
 ```
+
+  - the spatial data can be an `sf` object and  temporal data can be a `tsibble` object.
 
 :::{.notes}
 There are different ways you can create a cubble.
@@ -202,11 +256,13 @@ And cubble requires an additional `coords` parameter for coordinates.
 This is how the created cubble looks like
 :::
 
-## Cubble summary (1/2) {.smaller}
+## Cubble summary {.smaller}
 
 ::::columns
 
 :::column
+
+long form
 
 ```{r echo = FALSE}
 options(width = 50)
@@ -217,17 +273,24 @@ options(width = 50)
   face_temporal())
 ```
 
-  - a long form cubble as the subclass of `tsibble` 
-  - the third row now shows the spatial variables
+  
+```{r echo = TRUE}
+attr(weather_long, "spatial") 
+```
 
 :::
 
 :::column
 
-```{r echo = TRUE}
-attr(weather_long, "spatial") 
+back to the nested form: 
+
+```{r}
+#| echo: true
+(weather_back <- weather_long %>% face_spatial())
+
+identical(weather_back, weather)
 ```
-  
+ 
 
 :::
 ::::
@@ -245,22 +308,6 @@ attr(weather_long, "spatial")
 * The spatial variables are stored in the `spatial` attribute, which you can see through this command.  
 
 * Here it is stored as an sf object
-:::
-
-## Cubble summary (2/2) {.smaller}
-
-```{r echo = FALSE}
-options(width = wide_width)
-```
-
-```{r face-spatial, echo= TRUE}
-(weather_back <- weather_long %>% face_spatial())
-
-identical(weather_back, weather)
-```
-
-
-:::{.notes}
 
 * Here is the code example of using the function `face_spatial()` on the long form cubble
 
@@ -269,18 +316,35 @@ identical(weather_back, weather)
 :::
 
 
+## Access variables in the other form {.smaller}
+```{r}
+options(width = 100)
+```
 
-## Move coordinates into time
+
+Reference temporal variables with `$`
+
+```{r}
+#| echo: true
+weather %>% 
+  mutate(avg_tmax = mean(ts$tmax, na.rm = TRUE))
+```
+
+Move spatial variables (temporarily) into the long form
 
 ```{r echo = TRUE}
-(cb_glyph <- weather_long %>% unfold(long, lat))
+weather_long %>% unfold(long, lat)
 ```
+
 
 :::{.notes}
 Now we have longitude and latitude in the nested form and monthly summarised tmax in the long form, the last thing we need to do is to move them into the same table before making the glyph map.
 
 Here you need the verb `unfold`
 :::
+
+## 
+
 
 
 ## Glyph map transformation
@@ -299,7 +363,7 @@ DATA %>%
 ```
 
 :::footer
-https://huizezhang-sherry.github.io/cubble/articles/glyph.html
+[https://huizezhang-sherry.github.io/cubble/articles/glyph.html](https://huizezhang-sherry.github.io/cubble/articles/glyph.html)
 :::
 
 
@@ -318,28 +382,36 @@ Here (1) and (2) are
 :::
 
 
-## Making your first glyph map
+## Avg. max. temperature on the map {.smaller}
 
-```{r}
-#| code-fold: true
+```{r glyphmap}
+#| output-location: column
 #| echo: true
+#| fig-width: 7
+#| fig-height: 7
 cb <- as_cubble(
-  list(spatial = stations_sf, temporal = ts),
+  list(spatial = stations, temporal = ts),
   key = id, index = date, coords = c(long, lat)
 )
+
 set.seed(0927)
 cb_glyph <- cb %>%
   slice_sample(n = 20) %>%
   face_temporal() %>%
-  group_by(month = lubridate::month(date)) %>%
+  mutate(month = lubridate::month(date)) %>%
+  group_by(month) %>% 
   summarise(tmax = mean(tmax, na.rm = TRUE)) %>%
   unfold(long, lat)
+
 ggplot() +
-  geom_sf(data = oz_simp, fill = "grey95", color = "white") +
+  geom_sf(data = oz_simp, 
+          fill = "grey95", 
+          color = "white") +
   geom_glyph(
     data = cb_glyph,
-    aes(x_major = long, x_minor = month, y_major = lat, y_minor = tmax),
-    width = 2, height = 0.7) +
+    aes(x_major = long, x_minor = month,
+        y_major = lat, y_minor = tmax),
+    width = 2, height = 0.7) + 
   ggthemes::theme_map()
 ```
 
