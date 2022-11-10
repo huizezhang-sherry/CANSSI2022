@@ -11,8 +11,8 @@
 <link href="index_files/libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.1.251">
 
-  <meta name="author" content=" Sherry Zhang ">
-  <title>Switching between space and time: Spatio-temporal analysis with    cubble </title>
+  <meta name="author" content="Monash University, Australia">
+  <title> ¶ Switching between space and time: Spatio-temporal analysis with    cubble  ¶ </title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -391,10 +391,11 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="figures/canssi-logo.png" data-background-position="top 0% right 0%" data-background-size="10%, 10%" class="center">
-  <h1 class="title">Switching between space and time: Spatio-temporal analysis with <br> <i class="fa-solid fa-earth-oceania" aria-hidden="true"></i> cubble <i class="fa-solid fa-clock fa-fa-xs" aria-hidden="true"></i></h1>
-  <p class="author"><a href="https://github.com/huizezhang-sherry/"><i class="fa-brands fa-github" aria-hidden="true"></i></a> Sherry Zhang <a href="https://twitter.com/huizezhangsh"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></p>
-  <p class="institute">Monash University, Melbourne, Australia</p>
-  <p class="date">Nov 10 2022</p>
+  <h1 class="title"></h1><h2> ¶ Switching between space and time: Spatio-temporal analysis with <br> <i class="fa-solid fa-earth-oceania" aria-hidden="true"></i> cubble <i class="fa-solid fa-clock fa-fa-xs" aria-hidden="true"></i> ¶ </h2>
+  <p class="subtitle"><a href="https://github.com/huizezhang-sherry/"><i class="fa-brands fa-github" aria-hidden="true"></i></a> H. Sherry Zhang <a href="https://twitter.com/huizezhangsh"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a></p>
+  <p class="author">Monash University, Australia</p>
+  <p class="institute">CANSSI Ontario Statistical Software Conference</p>
+  <p class="date">2022 Nov 10</p>
 </section>
 
 <section>
@@ -403,20 +404,20 @@
 <!-- https://sherryzhang-canssi.netlify.app/ -->
 <div class="cell" data-layout-align="center">
 <style type="text/css">
-.title {
-  font-size: 20px;
+.form-allowed-tags {
+  display: none;
 }
 </style>
 </div>
 <div class="columns">
 <div class="column" style="width:65%;">
 <ul>
-<li><p>A third year PhD student at Monash University</p></li>
+<li><p>A third year PhD student at Monash University, Melbourne, Australia</p></li>
 <li><p>My research centers on exploring multivariate spatio-temporal data with data wrangling and visualisation tool.</p></li>
 <li><p>Find me on</p>
 <ul>
 <li>Twitter: <code>huizezhangsh</code>,</li>
-<li>github: <code>huizezhang-sherry</code>, and</li>
+<li>GitHub: <code>huizezhang-sherry</code>, and</li>
 <li><code>https://huizezhangsh.netlify.app/</code></li>
 </ul></li>
 </ul>
@@ -432,6 +433,26 @@
 </div>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li><p>Thanks for the invitation to speak</p></li>
+<li><p>Today I will be talking about …</p></li>
+<li><p>First, a little bit about myself</p></li>
+<li><p>I’m Sherry Zhang, …</p></li>
+<li><p>…</p></li>
+<li><p>Here are the details to find me on Twitter, GitHub, and my website</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="cell" data-layout-align="center">
 
 </div>
@@ -456,7 +477,10 @@
 <p>source: <a href="https://unsplash.com/photos/ZUhM8LE_HGc">https://unsplash.com/photos/ZUhM8LE_HGc</a> and <a href="https://unsplash.com/photos/nLHnx2-_sK4">https://unsplash.com/photos/nLHnx2-_sK4</a></p>
 </div>
 <aside class="notes">
-<p>Storage of spatial and temporal data is often split into different tables, which complicates spatio-temporal data analysis.</p>
+<ul>
+<li><p>Often, spatial and temporal data are stored separately</p></li>
+<li><p>This is convenient for data collection, not for the analysis</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -469,8 +493,8 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="long-table" class="slide level2 join" data-background-image="figures/long-table.jpg" data-background-size="38% 100%" data-background-position="left">
-<h2>Long table?</h2>
+<section id="a-long-table" class="slide level2 join" data-background-image="figures/long-table.jpg" data-background-size="38% 100%" data-background-position="left">
+<h2>A long table?</h2>
 <div style="text-align: right; position:absolute; left:40%">
 <p>Inefficient memory use,</p>
 <p>repeated information,</p>
@@ -487,9 +511,25 @@
 <div class="footer">
 <p>source: <a href="https://unsplash.com/photos/KKTCngYYWFk" class="uri">https://unsplash.com/photos/KKTCngYYWFk</a></p>
 </div>
+<aside class="notes">
+<ul>
+<li><p>Joining spatial and temporal data into a long table is not necessarily the best way to structure the data.</p></li>
+<li><p>This is because of the inefficient memory use, due to repeated information, especially when large geometry objects are combined with frequent temporal data.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="still-use-all-my-data-analysis-toolkits-built-from-tibble-data.frame" class="slide level2 still-tibble" data-background-image="figures/tibble-can.jpeg, figures/tibble-can.jpeg" data-background-size="25% 100%" data-background-position="left, 33%">
-<h2>Still use all my data analysis toolkits built from tibble /data.frame</h2>
+<section id="still-use-all-my-data-analysis-toolkits-built-from-tibble-data-frame" class="slide level2 still-tibble" data-background-image="figures/tibble-can.jpeg, figures/tibble-can.jpeg" data-background-size="25% 100%" data-background-position="left, 33%">
+<h2>Still use all my data analysis toolkits built from tibble (data frame)</h2>
 <div class="cell" data-layout-align="center">
 <style type="text/css">
 .still-tibble h2{
@@ -505,21 +545,61 @@
 <div class="footer">
 <p>source: <a href="https://www.educaborras.com/en/product/1500-cans/" class="uri">https://www.educaborras.com/en/product/1500-cans/</a></p>
 </div>
+<aside class="notes">
+<ul>
+<li><p>This motivates me to think about how to arrange spatio-temporal data for analysis.</p></li>
+<li><p>Ideally, we would like a data structure that can easily pivoting between spatial and temporal form</p></li>
+<li><p>It would be a plus if the interface is a tibble or data frame, so that we can use functionalities from existing packages for spatial and temporal analysis</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="cubble-a-spatio-temporal-vector-data-structure" class="slide level2">
 <h2>Cubble: a spatio-temporal vector data structure</h2>
-<p>Cubble is a nested object built on tibble that allow easy pivoting between spatial and temporal form.</p>
 
-<img data-src="figures/cubble-operations.png" width="1111" class="r-stretch quarto-figure-center"><div class="footer">
+<img data-src="figures/long-nested-form.png" width="960" class="r-stretch quarto-figure-center"><div class="footer">
 <p><a href="https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html" class="uri">https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html</a></p>
 </div>
 <aside class="notes">
-<p>For the wrangling part, I will use the cubble package</p>
-<p>A cubble has two forms, a nested form where all the temporal data is nested in a list column, just as how the geometry is a list column in the sf package.</p>
-<p>This form can be used for calculation on the space or make per station summary from the time series</p>
-<p>Another form is called the long form, which will elaborate the time series data in the long form and temporaily hide the spatial data.</p>
-<p>With the long form, you can make some temporal summary of the data.</p>
-<p>Here the illustration shows you how to turn a nested cubble into the long form with <code>face_temporal()</code> and backward with <code>face_spatial()</code>.</p>
+<ul>
+<li><p>Today I will introduce a new data structure, called cubble, for vector spatio-temporal data</p></li>
+<li><p>A cubble has two forms which you will see shortly that they can be pivoted back and forth.</p></li>
+<li><p>In the nested form, spatial variables are in columns out and temporal variables are nested into a list column called <code>ts</code></p></li>
+<li><p>In the long form, the time series data are shown in columns and each row is cross identified by the site and date in a long table</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="cubble-a-spatio-temporal-vector-data-structure-1" class="slide level2">
+<h2>Cubble: a spatio-temporal vector data structure</h2>
+<p>Cubble is a nested object built on tibble that allow easy pivoting between spatial and temporal form.</p>
+
+<img data-src="figures/cubble-operations.png" width="1111" class="r-stretch quarto-figure-center"><aside class="notes">
+<ul>
+<li><p>With cubble, you can easily pivoting between these two forms for the analysis.</p></li>
+<li><p>In general, spatial operations will be performed in the nested form, on the left, and temporal operations are carried out in the long form.</p></li>
+<li><p>The pair <code>face_temporal()</code> and <code>face_spatial()</code> to switch the cubble between the two forms.</p></li>
+<li><p>With <code>face_temporal()</code>, the focus of the data is now on the temporal face of the spatio-temporal cube and this corresponds to switch the data to the long form.</p></li>
+<li><p>With <code>face_spatial()</code>, the long cubble is switched back to the nested form, the spatial face of the datacube.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -537,7 +617,7 @@
 <div class="columns">
 <div class="column">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>spatial <span class="ot">&lt;-</span> stations <span class="sc">%&gt;%</span> </span>
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="4-9,14-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>spatial <span class="ot">&lt;-</span> stations <span class="sc">%&gt;%</span> </span>
 <span id="cb1-2"><a href="#cb1-2"></a>  {{ Your spatial analysis }} </span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="do">##############################</span></span>
@@ -574,12 +654,11 @@
 <aside class="notes">
 <ul>
 <li><p>Here is a syntax comparison with and without cubble</p></li>
-<li><p>With cubble, you can do some spatial analysis in the nested form, pivot it to the long form for some temporal analysis, and then pivot it back to the nested form for some additional spatial analysis.</p></li>
+<li><p>On the right hand side with cubble, you can do some spatial analysis in the nested form, pivot it to the long form for some temporal analysis, and then pivot it back to the nested form for some additional spatial analysis.</p></li>
 <li><p>Sometimes, the spatial analysis include extracting some interesting sites.</p></li>
-<li><p>Without cubble, you will need to first pull out those interesting ids, and then filter the temporal data on these sites.</p></li>
-<li><p>Similar steps can also happen in the temporal analysis and the spatial data needs to be updated.</p></li>
-<li><p>In cubble, these updates are automatically handled by <code>face_temporal()</code> and <code>face_spatial()</code> and no manual updates are needed.</p></li>
-<li><p>Also the cubble pipeline chains all the operations together with no intermediate objects created in the workflow.</p></li>
+<li><p>I have highlighted the code you will need to do to pull out some interesting stations and then filter out those station in the temporal data</p></li>
+<li><p>In cubble, these updates are automatically handled by <code>face_temporal()</code> and <code>face_spatial()</code>, so you don’t need to manually updates your spatial or temporal data to match with the other.</p></li>
+<li><p>Also the cubble pipeline chains all the operations together and there is no intermediate objects created in the workflow.</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -593,8 +672,8 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="australia-weather-station-data" class="slide level2 smaller">
-<h2>Australia weather station data:</h2>
+<section id="australian-weather-station-data" class="slide level2 smaller">
+<h2>Australian weather station data:</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell" data-layout-align="center">
@@ -646,11 +725,31 @@
 </div>
 </div>
 </div>
+<aside class="notes">
+<ul>
+<li><p>Now, let’s see cubble in a dataset of Australian weather stations</p></li>
+<li><p>The <code>stations</code> data records 30 weather stations, along with their longitude, latitude, elevation, and name</p></li>
+</ul>
+<p>[breath]</p>
+<ul>
+<li>On the temporal side, we have precipitation, maximum and minimum temperature collected daily for each station in 2020.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="cast-your-data-into-a-cubble" class="slide level2">
 <h2>Cast your data into a cubble</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>(weather <span class="ot">&lt;-</span> <span class="fu">as_cubble</span>(</span>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>(weather <span class="ot">&lt;-</span> <span class="fu">as_cubble</span>(</span>
 <span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">list</span>(<span class="at">spatial =</span> stations, <span class="at">temporal =</span> ts),</span>
 <span id="cb7-3"><a href="#cb7-3"></a>  <span class="at">key =</span> id, <span class="at">index =</span> date, <span class="at">coords =</span> <span class="fu">c</span>(long, lat)</span>
 <span id="cb7-4"><a href="#cb7-4"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -669,14 +768,22 @@
 </div>
 </div>
 <ul>
-<li>the spatial data can be an <code>sf</code> object and temporal data can be a <code>tsibble</code> object.</li>
+<li>the spatial data (<code>stations</code>) can be an <code>sf</code> object and temporal data (<code>ts</code>) can be a <code>tsibble</code> object.</li>
 </ul>
 <aside class="notes">
-<p>There are different ways you can create a cubble.</p>
-<p>If you have the spatial and temporal data in two separate tables, you can supply them as a list.</p>
-<p>Then you need to specify some parameters. The key and index are the same as how you would construct a tsibble</p>
-<p>And cubble requires an additional <code>coords</code> parameter for coordinates.</p>
-<p>This is how the created cubble looks like</p>
+<ul>
+<li><p>To cast the two separate tables into a cubble, you can supply them in a named list.</p></li>
+<li><p>You also need to tell cubble some identifiers it looks for</p></li>
+<li><p>The <code>key</code> argument is the spatial identifier that connects the two tables.</p></li>
+<li><p>The <code>index</code> argument is the temporal identifier that prescribes the timestamp.</p></li>
+<li><p>The <code>coords</code> argument is to used to specify the coordinate</p></li>
+</ul>
+<p>[breath]</p>
+<ul>
+<li><p>From the cubble header, you can read that the key is <code>id</code>, there are 30 stations and it is in the nested form.</p></li>
+<li><p>The third line here shows you the available temporal variables and their types.</p></li>
+<li><p>Also, if the spatial and temporal data is an sf or tsibble object, they will be indicated in the header as well.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -689,8 +796,8 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="cubble-summary" class="slide level2 smaller">
-<h2>Cubble summary</h2>
+<section id="switch-between-the-two-forms" class="slide level2 smaller">
+<h2>Switch between the two forms</h2>
 <div class="columns">
 <div class="column">
 <p>long form</p>
@@ -715,25 +822,11 @@
 # … with 10,627 more rows</code></pre>
 </div>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">attr</span>(weather_long, <span class="st">"spatial"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 30 × 6
-# Rowwise:  id
-  id            lat  long  elev name        wmo_id
-  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;
-1 ASN00003057 -16.5  123.     7 cygnet bay   94201
-2 ASN00005007 -22.2  114.     5 learmonth …  94302
-3 ASN00005084 -21.5  115.     5 thevenard …  94303
-4 ASN00010515 -32.1  117.   199 beverley     95615
-5 ASN00012314 -27.8  121.   497 leinster a…  95448
-# … with 25 more rows</code></pre>
-</div>
-</div>
 </div><div class="column">
 <p>back to the nested form:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>(weather_back <span class="ot">&lt;-</span> weather_long <span class="sc">%&gt;%</span> <span class="fu">face_spatial</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>(weather_back <span class="ot">&lt;-</span> weather_long <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>   <span class="fu">face_spatial</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># cubble:   id [30]: nested form
 # bbox:     [114.09, -41.88, 152.87, -11.65]
@@ -748,7 +841,7 @@
 5 ASN0001… -27.8  121.   497 lein…  95448 &lt;tibble&gt;
 # … with 25 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">identical</span>(weather_back, weather)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">identical</span>(weather_back, weather)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -757,13 +850,17 @@
 </div>
 <aside class="notes">
 <ul>
-<li><p>We can pivot this object into the long form with <code>face_temporal()</code></p></li>
-<li><p>Now the object <code>weather_long</code> is a long form cubble and it is a subclass of tsibble</p></li>
-<li><p>The third line in the header now changes to see the available spatial variables</p></li>
-<li><p>The spatial variables are stored in the <code>spatial</code> attribute, which you can see through this command.</p></li>
-<li><p>Here it is stored as an sf object</p></li>
-<li><p>Here is the code example of using the function <code>face_spatial()</code> on the long form cubble</p></li>
-<li><p>This would give us the nested cubble before making the switch to the long form</p></li>
+<li><p>Here is what a cubble look like when being switched between the long and the nested form.</p>
+<ul>
+<li>With the <code>weather</code> object we just created, we turn it into the long form with the function <code>face_temporal()</code></li>
+</ul></li>
+<li><p>Notice that the third line in the header now changes to see the available spatial variables</p></li>
+</ul>
+<p>[breath]</p>
+<ul>
+<li><p>On the right, <code>weather_long</code> is switched back the nested form with the function <code>face_spatial()</code></p></li>
+<li><p>As you can see from the last line of code, <code>face_temporal()</code> and <code>face_spatial()</code> are the exact inverse.</p></li>
+<li><p>Hence <code>weather_back</code> and <code>weather</code> are identical</p></li>
 </ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -784,8 +881,8 @@
 </div>
 <p>Reference temporal variables with <code>$</code></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>weather <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">mutate</span>(<span class="at">avg_tmax =</span> <span class="fu">mean</span>(ts<span class="sc">$</span>tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>weather <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">mutate</span>(<span class="at">avg_tmax =</span> <span class="fu">mean</span>(ts<span class="sc">$</span>tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># cubble:   id [30]: nested form
 # bbox:     [114.09, -41.88, 152.87, -11.65]
@@ -800,9 +897,10 @@
 # … with 25 more rows</code></pre>
 </div>
 </div>
-<p>Move spatial variables (temporarily) into the long form</p>
+<div class="fragment">
+<p>Move spatial variables into the long form</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>weather_long <span class="sc">%&gt;%</span> <span class="fu">unfold</span>(long, lat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>weather_long <span class="sc">%&gt;%</span> <span class="fu">unfold</span>(long, lat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># cubble:  date, id [30]: long form
 # bbox:    [114.09, -41.88, 152.87, -11.65]
@@ -818,8 +916,14 @@
 </div>
 </div>
 <aside class="notes">
-<p>Now we have longitude and latitude in the nested form and monthly summarised tmax in the long form, the last thing we need to do is to move them into the same table before making the glyph map.</p>
-<p>Here you need the verb <code>unfold</code></p>
+<ul>
+<li><p>Sometimes, you may need to access variables from the other form for your analysis.</p></li>
+<li><p>For example, we may want to calculate some per station summary of the time series data.</p></li>
+<li><p>We can refer to the temporal variables from the nested form with the <code>$</code> sign.</p></li>
+<li><p>Here I’m calculating the average maximum temperature across the whole year for each station and I need to get access to <code>tmax</code> from the list-column <code>ts</code>.</p></li>
+<li><p>In the long form, you need the cubble verb <code>unfold()</code> to move the spatial variables into the long form.</p></li>
+<li><p>Here I move the two coordinate columns into the long form and later we will see how it can help us to create a glyph map.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -831,6 +935,7 @@
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</div>
 </section>
 <section id="explore-temporal-pattern-across-space" class="slide level2 text-bottom" data-background-image="figures/temporal-pattern-across-space.png" data-background-size="80% 90%" data-background-position="center">
 <h2>Explore temporal pattern across space</h2>
@@ -847,28 +952,46 @@
 }
 </style>
 </div>
+<aside class="notes">
+<p>Sometimes, although we technically have spatio-temporal data, we may choose to fix a few stations to explore their temporal patterns, or select a few timestamps to explore their spatial distributions.</p>
+<p>A more holistic approach is to explore the space and time simultaneously and now we will see an example of how to use cubble to explore temporal pattern across space in a glyph map.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="glyph-map-transformation" class="slide level2">
 <h2>Glyph map transformation</h2>
 
 <img data-src="figures/glyph-steps.png" width="1354" class="r-stretch quarto-figure-center"><div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>DATA <span class="sc">%&gt;%</span></span>
-<span id="cb21-2"><a href="#cb21-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3"></a>  <span class="fu">geom_glyph</span>(</span>
-<span id="cb21-4"><a href="#cb21-4"></a>    <span class="fu">aes</span>(<span class="at">x_major =</span> X_MAJOR, <span class="at">x_minor =</span> X_MINOR,</span>
-<span id="cb21-5"><a href="#cb21-5"></a>        <span class="at">y_major =</span> Y_MAJOR, <span class="at">y_minor =</span> Y_MINOR)) <span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6"></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>DATA <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">geom_glyph</span>(</span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="fu">aes</span>(<span class="at">x_major =</span> X_MAJOR, <span class="at">x_minor =</span> X_MINOR,</span>
+<span id="cb19-5"><a href="#cb19-5"></a>        <span class="at">y_major =</span> Y_MAJOR, <span class="at">y_minor =</span> Y_MINOR)) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="footer">
 <p><a href="https://huizezhang-sherry.github.io/cubble/articles/glyph.html" class="uri">https://huizezhang-sherry.github.io/cubble/articles/glyph.html</a></p>
 </div>
 <aside class="notes">
-<p>The glyphmap is essentially a transformation of temporal variable into space.</p>
-<p>Here (1) shows a single station with its long and lat coordinate and (2) is its associated time series. We can use linear algebra to transform the temporal axes into the spatial scale as in (3) and once we have the time series in the transformed axes, they can be placed onto the map as in (4)</p>
-<p>To make a glyph map, you can use the <code>geom_glyph</code> function from cubble.</p>
-<p>It requires a pair of major and a pair of minor variable as aesthetics</p>
-<p>The major variable are the spatial coordinates, long and lat here and hte minor variable are the temporal coordinates, date and tmax here.</p>
-<p>Here (1) and (2) are</p>
+<ul>
+<li><p>The glyphmap is essentially a transformation of temporal variable into space.</p></li>
+<li><p>I have a short illustration to show you how the transformation works</p></li>
+<li><p>Here (1) shows a single station on the map with its long and lat coordinate and (2) is its associated time series.</p></li>
+<li><p>In step (3), the temporal axes is transformed into the spatial scale with linear algebra, and</p></li>
+<li><p>Once we have the time series in the transformed axes, they can be placed onto the map as in (4)</p></li>
+<li><p>To make a glyph map, you can use the <code>geom_glyph</code> function from the cubble package.</p></li>
+<li><p>It requires a pair of major and a pair of minor variable as required aesthetics</p></li>
+<li><p>The major variable are the spatial coordinates, long and lat here and the minor variable are the temporal coordinates, date and tmax here.</p></li>
+</ul>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -885,30 +1008,30 @@
 <h2>Avg. max. temperature on the map</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>cb <span class="ot">&lt;-</span> <span class="fu">as_cubble</span>(</span>
-<span id="cb22-2"><a href="#cb22-2"></a>  <span class="fu">list</span>(<span class="at">spatial =</span> stations, <span class="at">temporal =</span> ts),</span>
-<span id="cb22-3"><a href="#cb22-3"></a>  <span class="at">key =</span> id, <span class="at">index =</span> date, <span class="at">coords =</span> <span class="fu">c</span>(long, lat)</span>
-<span id="cb22-4"><a href="#cb22-4"></a>)</span>
-<span id="cb22-5"><a href="#cb22-5"></a></span>
-<span id="cb22-6"><a href="#cb22-6"></a><span class="fu">set.seed</span>(<span class="dv">0927</span>)</span>
-<span id="cb22-7"><a href="#cb22-7"></a>cb_glyph <span class="ot">&lt;-</span> cb <span class="sc">%&gt;%</span></span>
-<span id="cb22-8"><a href="#cb22-8"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>  <span class="fu">face_temporal</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb22-10"><a href="#cb22-10"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(date)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-11"><a href="#cb22-11"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-12"><a href="#cb22-12"></a>  <span class="fu">summarise</span>(<span class="at">tmax =</span> <span class="fu">mean</span>(tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb22-13"><a href="#cb22-13"></a>  <span class="fu">unfold</span>(long, lat)</span>
-<span id="cb22-14"><a href="#cb22-14"></a></span>
-<span id="cb22-15"><a href="#cb22-15"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb22-16"><a href="#cb22-16"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> oz_simp, </span>
-<span id="cb22-17"><a href="#cb22-17"></a>          <span class="at">fill =</span> <span class="st">"grey95"</span>, </span>
-<span id="cb22-18"><a href="#cb22-18"></a>          <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
-<span id="cb22-19"><a href="#cb22-19"></a>  <span class="fu">geom_glyph</span>(</span>
-<span id="cb22-20"><a href="#cb22-20"></a>    <span class="at">data =</span> cb_glyph,</span>
-<span id="cb22-21"><a href="#cb22-21"></a>    <span class="fu">aes</span>(<span class="at">x_major =</span> long, <span class="at">x_minor =</span> month,</span>
-<span id="cb22-22"><a href="#cb22-22"></a>        <span class="at">y_major =</span> lat, <span class="at">y_minor =</span> tmax),</span>
-<span id="cb22-23"><a href="#cb22-23"></a>    <span class="at">width =</span> <span class="dv">2</span>, <span class="at">height =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
-<span id="cb22-24"><a href="#cb22-24"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="1-4|6-13|6-8|9-12|13|15-24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>cb <span class="ot">&lt;-</span> <span class="fu">as_cubble</span>(</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">list</span>(<span class="at">spatial =</span> stations, <span class="at">temporal =</span> ts),</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  <span class="at">key =</span> id, <span class="at">index =</span> date, <span class="at">coords =</span> <span class="fu">c</span>(long, lat)</span>
+<span id="cb20-4"><a href="#cb20-4"></a>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">set.seed</span>(<span class="dv">0927</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>cb_glyph <span class="ot">&lt;-</span> cb <span class="sc">%&gt;%</span></span>
+<span id="cb20-8"><a href="#cb20-8"></a>  <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>  <span class="fu">face_temporal</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>  <span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-12"><a href="#cb20-12"></a>  <span class="fu">summarise</span>(<span class="at">tmax =</span> <span class="fu">mean</span>(tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-13"><a href="#cb20-13"></a>  <span class="fu">unfold</span>(long, lat)</span>
+<span id="cb20-14"><a href="#cb20-14"></a></span>
+<span id="cb20-15"><a href="#cb20-15"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-16"><a href="#cb20-16"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> oz_simp, </span>
+<span id="cb20-17"><a href="#cb20-17"></a>          <span class="at">fill =</span> <span class="st">"grey95"</span>, </span>
+<span id="cb20-18"><a href="#cb20-18"></a>          <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb20-19"><a href="#cb20-19"></a>  <span class="fu">geom_glyph</span>(</span>
+<span id="cb20-20"><a href="#cb20-20"></a>    <span class="at">data =</span> cb_glyph,</span>
+<span id="cb20-21"><a href="#cb20-21"></a>    <span class="fu">aes</span>(<span class="at">x_major =</span> long, <span class="at">x_minor =</span> month,</span>
+<span id="cb20-22"><a href="#cb20-22"></a>        <span class="at">y_major =</span> lat, <span class="at">y_minor =</span> tmax),</span>
+<span id="cb20-23"><a href="#cb20-23"></a>    <span class="at">width =</span> <span class="dv">2</span>, <span class="at">height =</span> <span class="fl">0.7</span>) <span class="sc">+</span> </span>
+<span id="cb20-24"><a href="#cb20-24"></a>  ggthemes<span class="sc">::</span><span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -919,19 +1042,64 @@
 </div>
 </div>
 </div>
-</section>
-<section id="further-reading" class="slide level2">
-<h2>Further reading</h2>
+<aside class="notes">
 <ul>
-<li>cubble: <a href="https://huizezhang-sherry.github.io/cubble/" class="uri">https://huizezhang-sherry.github.io/cubble/</a></li>
+<li><p>This is a full example of using glyph map to explore Australian weather pattern.</p></li>
+<li><p>The code has three blocks.</p></li>
+<li><p>In the first block we first create a cubble object form the <code>stations</code> and <code>ts</code> data.</p></li>
+<li><p>The second block involves wrangling the data using the nested and long form.</p></li>
+<li><p>Sampling 20 stations is a spatial operations, so it is performed in the nested form.</p></li>
+<li><p>Then we need to do a summary of average maximum tmeperature by month. It is a temporal operation, so the cubble is then switched to the long form with <code>face_temporal()</code>.</p></li>
+<li><p>The glyph map requires both the spatial and temporal axes variables as aesthetics, so we move the column <code>long</code> and <code>lat</code> with <code>unfold()</code> into the long form.</p></li>
+<li><p>The last chunk shows the ggplot2 code to make the glyph map with <code>geom_glyph()</code></p></li>
 </ul>
+<p>[breath]</p>
+<ul>
+<li><p>On the map, you can see that the temperature curve in the north and south (the Tasmania Island) are relative constant throughout the year.</p></li>
+<li><p>Those inland stations, for example in the eastern Australia, have a much visible variation in the year, as compared to the coastline ones.</p></li>
+<li><p>And remember Australia is in the southern hemisphere, so winter is in the June, July, and August and the temperature is in the U-shape.</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
-<section id="acknowledgements" class="slide level2">
+<section id="acknowledgements" class="slide level2 smaller">
 <h2>Acknowledgements</h2>
 <ul>
 <li><p>The slides are made with <a href="https://quarto.org/">Quarto</a></p></li>
-<li><p>All the materials used to prepare the slides are available at <a href="sherryzhang-CANSSI2022.netlify.app">sherryzhang-CANSSI2022.netlify.app</a></p></li>
+<li><p>All the materials used to prepare the slides are available at <a href="sherryzhang-canssi2022.netlify.app">sherryzhang-canssi2022.netlify.app</a></p></li>
 </ul>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><p>cubble: <a href="https://huizezhang-sherry.github.io/cubble/" class="uri">https://huizezhang-sherry.github.io/cubble/</a></p></li>
+<li><p>Wickham, H., Hofmann, H., Wickham, C., &amp; Cook, D. (2012). Glyph‐maps for visually exploring temporal patterns in climate data and models. Environmetrics, 23(5), 382-393: <a href="https://vita.had.co.nz/papers/glyph-maps.pdf">https://vita.had.co.nz/papers/glyph-maps.pdf</a></p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li><p>This wraps up my talk today.</p></li>
+<li><p>Cubble has already made its way to CRAN</p></li>
+<li><p>There will be a version update on cubble in the next two weeks, so stay tuned!</p></li>
+<li><p>Thanks for listening</p></li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <div class="cell" data-layout-align="center">
 
 </div>
