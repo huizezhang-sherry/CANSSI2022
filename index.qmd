@@ -21,7 +21,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Hi!{.smaller}
+# Hi! {.smaller}
 
 <!-- https://sherryzhang-canssi.netlify.app/ -->
 
@@ -56,18 +56,17 @@ library(flair)
 
 -   My research centers on exploring multivariate spatio-temporal data with data wrangling and visualisation tool.
 
--  Find me on 
-    - Twitter: `huizezhangsh`, 
-    - github: `huizezhang-sherry`, and 
-    - `https://huizezhangsh.netlify.app/` 
+-   Find me on
+
+    -   Twitter: `huizezhangsh`,
+    -   github: `huizezhang-sherry`, and
+    -   `https://huizezhangsh.netlify.app/`
 :::
 
 ::: {.column width="35%"}
 ```{r}
 knitr::include_graphics(here::here("figures/headshot.jpg"))
 ```
-
-
 :::
 :::
 
@@ -83,38 +82,80 @@ ts <- cubble::climate_subset %>%
   as_tibble()
 ```
 
-## Motivation on cubble 
+## Storage of spatial and temporal data is often split into different tables {.stored-separately background-image="figures/store-fridge.jpg, figures/store-pantry.jpg" background-position="left bottom, right top" background-size="38% 100%, 30% 100%"}
 
+```{css echo=FALSE}
+.stored-separately h2{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  color: black; 
+  text-align: right;
+  position: absolute;
+  top: 3%;
+  right:30%;
+  font-size: 1.5em
+}
+```
 
-
-picture of things in different places 
-
-:::{.notes}
-Storage of spatial and temporal data is often split into different tables, which complicates spatio-temporal data analysis. Creating one table has the problem of inefficient memory use, due to repeated information, especially when large geometry objects are combined with frequent (daily or weekly) temporal data.
+:::{.footer}
+source: [https://unsplash.com/photos/ZUhM8LE_HGc](https://unsplash.com/photos/ZUhM8LE_HGc) and [https://unsplash.com/photos/nLHnx2-_sK4](https://unsplash.com/photos/nLHnx2-_sK4)
 :::
 
-## Motivation on cubble
+::: notes
+Storage of spatial and temporal data is often split into different tables, which complicates spatio-temporal data analysis.
+:::
 
-Maybe join? No no
+## Long table? {.join background-image="figures/long-table.jpg" background-size="38% 100%" background-position="left"}
 
-## Motivation on cubble
+::: {style="text-align: right; position:absolute; left:40%"}
+Inefficient memory use, 
 
-I will would like to use all my data analysis toolkit built on top of tibble/ data.frame
+repeated information,
+
+especially when large geometry objects are combined with frequent temporal data (daily or weekly).
+:::
+
+```{css echo=FALSE}
+.join h2{
+  text-align: right;
+  right: 0%;
+}
+```
+
+::: footer
+source: <https://unsplash.com/photos/KKTCngYYWFk>
+:::
+
+## Still use all my data analysis toolkits built from tibble /data.frame {.still-tibble background-image="figures/tibble-can.jpeg, figures/tibble-can.jpeg" background-size="25% 100%" background-position="left, 33%"}
+
+```{css echo=FALSE}
+.still-tibble h2{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  text-align: right; 
+  position: absolute;
+  top: 30%;
+  left: 35%;
+}
+```
+
+::: footer
+source: <https://www.educaborras.com/en/product/1500-cans/>
+:::
 
 ## Cubble: a spatio-temporal vector data structure
 
 Cubble is a nested object built on tibble that allow easy pivoting between spatial and temporal form.
 
-
 ```{r}
 knitr::include_graphics(here::here("figures/cubble-operations.png"))
 ```
 
-:::footer
-[https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html](https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html)
+::: footer
+<https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html>
 :::
 
-:::{.notes}
+::: notes
 For the wrangling part, I will use the cubble package
 
 A cubble has two forms, a nested form where all the temporal data is nested in a list column, just as how the geometry is a list column in the sf package.
@@ -126,15 +167,12 @@ Another form is called the long form, which will elaborate the time series data 
 With the long form, you can make some temporal summary of the data.
 
 Here the illustration shows you how to turn a nested cubble into the long form with `face_temporal()` and backward with `face_spatial()`.
-
-
 :::
 
 ## Pipeline with cubble {.smaller}
 
-::::columns
-
-:::column
+::: columns
+::: column
 ```{r conv-code, eval = FALSE, echo =TRUE}
 spatial <- stations %>% 
   {{ Your spatial analysis }} 
@@ -160,10 +198,9 @@ sp_subset %>%
   {{ Your spatial analysis }} 
   
 ```
-
 :::
 
-:::column
+::: column
 ```{r cb-code, eval = FALSE, echo = TRUE}
 cb_obj %>% 
   {{ Your spatial analysis }} %>% 
@@ -172,33 +209,29 @@ cb_obj %>%
   face_spatial() %>% 
   {{ Your spatial analysis }} 
 ```
-
+:::
 :::
 
+::: notes
+-   Here is a syntax comparison with and without cubble
 
-::::
+-   With cubble, you can do some spatial analysis in the nested form, pivot it to the long form for some temporal analysis, and then pivot it back to the nested form for some additional spatial analysis.
 
-:::{.notes}
-* Here is a syntax comparison with and without cubble
+-   Sometimes, the spatial analysis include extracting some interesting sites.
 
-* With cubble, you can do some spatial analysis in the nested form, pivot it to the long form for some temporal analysis, and then pivot it back to the nested form for some additional spatial analysis. 
+-   Without cubble, you will need to first pull out those interesting ids, and then filter the temporal data on these sites.
 
-* Sometimes, the spatial analysis include extracting some interesting sites.
+-   Similar steps can also happen in the temporal analysis and the spatial data needs to be updated.
 
-* Without cubble, you will need to first pull out those interesting ids, and then filter the temporal data on these sites.
+-   In cubble, these updates are automatically handled by `face_temporal()` and `face_spatial()` and no manual updates are needed.
 
-* Similar steps can also happen in the temporal analysis and the spatial data needs to be updated.
-
-* In cubble, these updates are automatically handled by `face_temporal()` and `face_spatial()` and no manual updates are needed.
-
-* Also the cubble pipeline chains all the operations together with no intermediate objects created in the workflow.
+-   Also the cubble pipeline chains all the operations together with no intermediate objects created in the workflow.
 :::
 
-## Australia weather station data: {.smaller} 
+## Australia weather station data: {.smaller}
 
-::::columns
-:::{.column width="60%"}
-
+::: columns
+::: {.column width="60%"}
 ```{r}
 #| echo: true
 stations
@@ -212,10 +245,9 @@ ggplot() +
   geom_point(data = stations, aes(long,lat)) + 
   ggthemes::theme_map()
 ```
-
 :::
 
-:::{.column width="40%"}
+::: {.column width="40%"}
 ```{r}
 #| echo: true
 ts
@@ -227,11 +259,8 @@ ts %>%
   geom_line(aes(x = date, y = tmax, group = id), alpha = 0.4) + 
   theme_bw()
 ```
-
-
 :::
-
-::::
+:::
 
 ## Cast your data into a cubble
 
@@ -242,9 +271,9 @@ ts %>%
 ))
 ```
 
-  - the spatial data can be an `sf` object and  temporal data can be a `tsibble` object.
+-   the spatial data can be an `sf` object and temporal data can be a `tsibble` object.
 
-:::{.notes}
+::: notes
 There are different ways you can create a cubble.
 
 If you have the spatial and temporal data in two separate tables, you can supply them as a list.
@@ -258,10 +287,8 @@ This is how the created cubble looks like
 
 ## Cubble summary {.smaller}
 
-::::columns
-
-:::column
-
+::: columns
+::: column
 long form
 
 ```{r echo = FALSE}
@@ -273,16 +300,13 @@ options(width = 50)
   face_temporal())
 ```
 
-  
 ```{r echo = TRUE}
 attr(weather_long, "spatial") 
 ```
-
 :::
 
-:::column
-
-back to the nested form: 
+::: column
+back to the nested form:
 
 ```{r}
 #| echo: true
@@ -290,37 +314,30 @@ back to the nested form:
 
 identical(weather_back, weather)
 ```
- 
-
 :::
-::::
-
-
-:::{.notes}
-
-* We can pivot this object into the long form with `face_temporal()`
-
-* Now the object `weather_long` is a long form cubble and it is a subclass of tsibble
-
-* The third line in the header now changes to see the available spatial variables
-
-
-* The spatial variables are stored in the `spatial` attribute, which you can see through this command.  
-
-* Here it is stored as an sf object
-
-* Here is the code example of using the function `face_spatial()` on the long form cubble
-
-* This would give us the nested cubble before making the switch to the long form
-
 :::
 
+::: notes
+-   We can pivot this object into the long form with `face_temporal()`
+
+-   Now the object `weather_long` is a long form cubble and it is a subclass of tsibble
+
+-   The third line in the header now changes to see the available spatial variables
+
+-   The spatial variables are stored in the `spatial` attribute, which you can see through this command.
+
+-   Here it is stored as an sf object
+
+-   Here is the code example of using the function `face_spatial()` on the long form cubble
+
+-   This would give us the nested cubble before making the switch to the long form
+:::
 
 ## Access variables in the other form {.smaller}
+
 ```{r}
 options(width = 100)
 ```
-
 
 Reference temporal variables with `$`
 
@@ -336,16 +353,25 @@ Move spatial variables (temporarily) into the long form
 weather_long %>% unfold(long, lat)
 ```
 
-
-:::{.notes}
+::: notes
 Now we have longitude and latitude in the nested form and monthly summarised tmax in the long form, the last thing we need to do is to move them into the same table before making the glyph map.
 
 Here you need the verb `unfold`
 :::
 
-## 
+## Explore temporal pattern across space {.text-bottom background-image="figures/temporal-pattern-across-space.png" background-size="80% 90%" background-position="center"}
 
-
+```{css echo=FALSE}
+.text-bottom h2{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  color: black; 
+  position: absolute;
+  top: 78%;
+  left: 3%;
+  font-size: 1.5em
+}
+```
 
 ## Glyph map transformation
 
@@ -362,12 +388,11 @@ DATA %>%
   ...
 ```
 
-:::footer
-[https://huizezhang-sherry.github.io/cubble/articles/glyph.html](https://huizezhang-sherry.github.io/cubble/articles/glyph.html)
+::: footer
+<https://huizezhang-sherry.github.io/cubble/articles/glyph.html>
 :::
 
-
-:::{.notes}
+::: notes
 The glyphmap is essentially a transformation of temporal variable into space.
 
 Here (1) shows a single station with its long and lat coordinate and (2) is its associated time series. We can use linear algebra to transform the temporal axes into the spatial scale as in (3) and once we have the time series in the transformed axes, they can be placed onto the map as in (4)
@@ -380,7 +405,6 @@ The major variable are the spatial coordinates, long and lat here and hte minor 
 
 Here (1) and (2) are
 :::
-
 
 ## Avg. max. temperature on the map {.smaller}
 
@@ -417,13 +441,13 @@ ggplot() +
 
 ## Further reading
 
-  - cubble: [https://huizezhang-sherry.github.io/cubble/](https://huizezhang-sherry.github.io/cubble/)
+-   cubble: <https://huizezhang-sherry.github.io/cubble/>
 
 ## Acknowledgements
 
-  - The slides are made with [Quarto](https://quarto.org/)
+-   The slides are made with [Quarto](https://quarto.org/)
 
-  - All the materials used to prepare the slides are available at [sherryzhang-CANSSI2022.netlify.app](sherryzhang-CANSSI2022.netlify.app)
+-   All the materials used to prepare the slides are available at [sherryzhang-CANSSI2022.netlify.app](sherryzhang-CANSSI2022.netlify.app)
 
 ```{r eval = FALSE}
 # script for diagram
@@ -480,4 +504,3 @@ g2 <- (p1 | p2) / (p4 | p3) + plot_layout(guides='collect') &
 
 ggsave(g2, filename = here::here("figures/glyph-steps.png"), height = 4)
 ```
-

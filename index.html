@@ -436,11 +436,27 @@
 
 </div>
 </section>
-<section id="motivation-on-cubble" class="slide level2">
-<h2>Motivation on cubble</h2>
-<p>picture of things in different places</p>
+<section id="storage-of-spatial-and-temporal-data-is-often-split-into-different-tables" class="slide level2 stored-separately" data-background-image="figures/store-fridge.jpg, figures/store-pantry.jpg" data-background-position="left bottom, right top" data-background-size="38% 100%, 30% 100%">
+<h2>Storage of spatial and temporal data is often split into different tables</h2>
+<div class="cell" data-layout-align="center">
+<style type="text/css">
+.stored-separately h2{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  color: black; 
+  text-align: right;
+  position: absolute;
+  top: 3%;
+  right:30%;
+  font-size: 1.5em
+}
+</style>
+</div>
+<div class="footer">
+<p>source: <a href="https://unsplash.com/photos/ZUhM8LE_HGc">https://unsplash.com/photos/ZUhM8LE_HGc</a> and <a href="https://unsplash.com/photos/nLHnx2-_sK4">https://unsplash.com/photos/nLHnx2-_sK4</a></p>
+</div>
 <aside class="notes">
-<p>Storage of spatial and temporal data is often split into different tables, which complicates spatio-temporal data analysis. Creating one table has the problem of inefficient memory use, due to repeated information, especially when large geometry objects are combined with frequent (daily or weekly) temporal data.</p>
+<p>Storage of spatial and temporal data is often split into different tables, which complicates spatio-temporal data analysis.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -453,20 +469,49 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="motivation-on-cubble-1" class="slide level2">
-<h2>Motivation on cubble</h2>
-<p>Maybe join? No no</p>
+<section id="long-table" class="slide level2 join" data-background-image="figures/long-table.jpg" data-background-size="38% 100%" data-background-position="left">
+<h2>Long table?</h2>
+<div style="text-align: right; position:absolute; left:40%">
+<p>Inefficient memory use,</p>
+<p>repeated information,</p>
+<p>especially when large geometry objects are combined with frequent temporal data (daily or weekly).</p>
+</div>
+<div class="cell" data-layout-align="center">
+<style type="text/css">
+.join h2{
+  text-align: right;
+  right: 0%;
+}
+</style>
+</div>
+<div class="footer">
+<p>source: <a href="https://unsplash.com/photos/KKTCngYYWFk" class="uri">https://unsplash.com/photos/KKTCngYYWFk</a></p>
+</div>
 </section>
-<section id="motivation-on-cubble-2" class="slide level2">
-<h2>Motivation on cubble</h2>
-<p>I will would like to use all my data analysis toolkit built on top of tibble/ data.frame</p>
+<section id="still-use-all-my-data-analysis-toolkits-built-from-tibble-data.frame" class="slide level2 still-tibble" data-background-image="figures/tibble-can.jpeg, figures/tibble-can.jpeg" data-background-size="25% 100%" data-background-position="left, 33%">
+<h2>Still use all my data analysis toolkits built from tibble /data.frame</h2>
+<div class="cell" data-layout-align="center">
+<style type="text/css">
+.still-tibble h2{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  text-align: right; 
+  position: absolute;
+  top: 30%;
+  left: 35%;
+}
+</style>
+</div>
+<div class="footer">
+<p>source: <a href="https://www.educaborras.com/en/product/1500-cans/" class="uri">https://www.educaborras.com/en/product/1500-cans/</a></p>
+</div>
 </section>
 <section id="cubble-a-spatio-temporal-vector-data-structure" class="slide level2">
 <h2>Cubble: a spatio-temporal vector data structure</h2>
 <p>Cubble is a nested object built on tibble that allow easy pivoting between spatial and temporal form.</p>
 
 <img data-src="figures/cubble-operations.png" width="1111" class="r-stretch quarto-figure-center"><div class="footer">
-<p><a href="https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html">https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html</a></p>
+<p><a href="https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html" class="uri">https://huizezhang-sherry.github.io/cubble/articles/cubble-design.html</a></p>
 </div>
 <aside class="notes">
 <p>For the wrangling part, I will use the cubble package</p>
@@ -787,8 +832,21 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="explore-temporal-pattern-across-space" class="slide level2 text-bottom" data-background-image="figures/temporal-pattern-across-space.png" data-background-size="80% 90%" data-background-position="center">
+<h2>Explore temporal pattern across space</h2>
+<div class="cell" data-layout-align="center">
+<style type="text/css">
+.text-bottom h2{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 30px 30px 30px 30px;
+  color: black; 
+  position: absolute;
+  top: 78%;
+  left: 3%;
+  font-size: 1.5em
+}
+</style>
+</div>
 </section>
 <section id="glyph-map-transformation" class="slide level2">
 <h2>Glyph map transformation</h2>
@@ -802,7 +860,7 @@
 <span id="cb21-6"><a href="#cb21-6"></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="footer">
-<p><a href="https://huizezhang-sherry.github.io/cubble/articles/glyph.html">https://huizezhang-sherry.github.io/cubble/articles/glyph.html</a></p>
+<p><a href="https://huizezhang-sherry.github.io/cubble/articles/glyph.html" class="uri">https://huizezhang-sherry.github.io/cubble/articles/glyph.html</a></p>
 </div>
 <aside class="notes">
 <p>The glyphmap is essentially a transformation of temporal variable into space.</p>
@@ -865,7 +923,7 @@
 <section id="further-reading" class="slide level2">
 <h2>Further reading</h2>
 <ul>
-<li>cubble: <a href="https://huizezhang-sherry.github.io/cubble/">https://huizezhang-sherry.github.io/cubble/</a></li>
+<li>cubble: <a href="https://huizezhang-sherry.github.io/cubble/" class="uri">https://huizezhang-sherry.github.io/cubble/</a></li>
 </ul>
 </section>
 <section id="acknowledgements" class="slide level2">
